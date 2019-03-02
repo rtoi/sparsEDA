@@ -48,7 +48,9 @@ function [driver, SCL, MSE] = sparsEDA(signalIn,sr,graphics,epsilon,Kmax,dmin,rh
     b0 = 0;
      
     pointerS = (20*sr) + 1;
-    pointerE = pointerS + Nss;
+    ## Length of the dataset is Nss, but the index of the last
+    ## item is pointerS + Nss - 1 (not pointerS + Nss)
+    pointerE = pointerS + Nss - 1;
     signalRs = signalAdd(pointerS:pointerE);
     
     %% Overlap save
